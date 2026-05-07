@@ -1,1 +1,150 @@
-
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>小7の音乐卡片</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+body {
+    background: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.music-card {
+    width: 370px;
+    height: 200px;
+    border-radius: 20px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+@media (prefers-color-scheme: light) {
+    .music-card { background: rgba(255,255,255,0.45); color: #000; }
+    #progressBar { background: #eee; }
+    #progressBar::-webkit-slider-thumb { background: #007aff; border-color: #fff; }
+    .playlist-pop { background: #fff; border:1px solid #eee; }
+    .lyric-area { background: rgba(0,0,0,0.04); color: #444; }
+    .lyric-line.active { color: #007aff; }
+    .source-toggle { background: rgba(0,122,255,0.15); color:#007aff; }
+}
+@media (prefers-color-scheme: dark) {
+    .music-card { background: #202020; color: #fff; }
+    #progressBar { background: #333; }
+    #progressBar::-webkit-slider-thumb { background: #ff9f0a; border-color: #202020; }
+    .playlist-pop { background: #1a1a1a; border:1px solid #333; }
+    .lyric-area { background: rgba(255,255,255,0.05); color: #ccc; }
+    .lyric-line.active { color: #ff9f0a; }
+    .source-toggle { background: rgba(236,72,54,0.18); color:#ec4836; }
+}
+.top-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.cover {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: #666;
+}
+.info {
+    flex: 1;
+    min-width: 0;
+}
+.song-name {
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-artist {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 2px;
+}
+#progressBar {
+    width: 100%;
+    height: 5px;
+    -webkit-appearance: none;
+    border-radius: 3px;
+}
+.lyric-area {
+    height: 48px;
+    font-size: 11px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 6px 4px;
+    margin: 6px 0;
+}
+.control-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ctrl-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.ctrl-btn {
+    background: none;
+    border: none;
+    color: inherit;
+}
+.small-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 10px;
+}
+.playlist-pop {
+    position: absolute;
+    bottom: 48px;
+    left: 12px;
+    width: 220px;
+    max-height: 150px;
+    border-radius: 12px;
+    padding: 6px;
+    display: none;
+}
+</style>
+</head>
+<body>
+<div class="music-card">
+    <div class="top-row">
+        <img class="cover">
+        <div class="info">
+            <div class="song-name">未播放</div>
+            <div class="song-artist">点击搜索播放</div>
+            <input type="range" id="progressBar">
+        </div>
+        <div class="source-toggle">🎵 QQ音乐</div>
+    </div>
+    <div class="lyric-area">暂无歌词</div>
+    <div class="control-bar">
+        <div class="ctrl-buttons">
+            <button class="ctrl-btn">⏮</button>
+            <button class="ctrl-btn">▶</button>
+            <button class="ctrl-btn">⏭</button>
+        </div>
+        <div>
+            <button class="small-btn">歌词</button>
+            <button class="small-btn">搜索</button>
+            <button class="small-btn">添加</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
